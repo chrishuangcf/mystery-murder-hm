@@ -50,7 +50,7 @@ function App() {
             <button onClick={() => setView('create')} className="hover:text-white transition-colors">Create</button>
             <button onClick={() => setView('tutorial')} className="hover:text-white transition-colors">Guide</button>
             <button 
-              onClick={() => window.location.href = 'https://github.com/chrishuangcf/mystery-murder'} 
+              onClick={() => window.location.href = 'https://github.com/chrishuangcf/mystery-murder/blob/main/documents/player/QUICK_START.md#quick-setup-with-docker'} 
               className="px-4 py-2 bg-slate-100 text-slate-900 rounded-md hover:bg-white transition-colors font-bold"
             >
               Enter Game
