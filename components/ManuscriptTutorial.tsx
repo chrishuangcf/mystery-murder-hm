@@ -171,13 +171,12 @@ const ManuscriptTutorial: React.FC<ManuscriptTutorialProps> = ({ onBack }) => {
 - <span className="text-yellow-300">**Importance**</span>: 5
 - <span className="text-yellow-300">**Location**</span>: Library
 - <span className="text-yellow-300">**Metadata**</span>:
-  ```json
-  {
+  {'{'}
     "pages": 156,
     "key_entries": ["blackmail", "will"],
     "hidden": true
-  }
-  ```
+  {'}'}
+
 - <span className="text-yellow-300">**Evidence Chains**</span>:
   - Supports: Motive (strength: 1.0)
 </pre>
@@ -242,13 +241,12 @@ const ManuscriptTutorial: React.FC<ManuscriptTutorialProps> = ({ onBack }) => {
 - <span className="text-yellow-300">**Location**</span>: Library
 - <span className="text-yellow-300">**Trigger**</span>: secret_passage_used
 - <span className="text-yellow-300">**Consequences**</span>:
-  ```json
-  {
+  {'{'}
     "victim": "Lady Victoria",
     "murder_weapon": "Letter Opener",
     "game_state": "murder_discovered"
-  }
-  ```
+  {'}'}
+
 </pre>
               </div>
             </div>
