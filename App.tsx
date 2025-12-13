@@ -12,6 +12,7 @@ import GameDashboard from './components/GameDashboard';
 
 function App() {
   const [view, setView] = useState<'home' | 'tutorial' | 'create' | 'game' | 'game-details'>('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleNavClick = (sectionId?: string) => {
     setView('home');
@@ -40,9 +41,10 @@ function App() {
             className="flex items-center space-x-2 cursor-pointer" 
             onClick={() => handleNavClick()}
           >
-            <span className="text-2xl font-bold brand-font text-white">MYSTERY MURDER <span className="text-purple-500">GAME ENGINE</span></span>
+            <span className="text-lg md:text-2xl font-bold brand-font text-white">MYSTERY MURDER <span className="text-purple-500">GAME ENGINE</span></span>
           </div>
-          {/* Added items-center to fix alignment issues */}
+          
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
             <button onClick={() => handleNavClick()} className="hover:text-white transition-colors">Home</button>
             <button onClick={() => handleNavClick('mission')} className="hover:text-white transition-colors">Mission</button>
@@ -56,7 +58,79 @@ function App() {
               Enter Game
             </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden flex flex-col space-y-1.5"
+          >
+            <span className={`block w-6 h-0.5 bg-slate-300 transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-slate-300 transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-slate-300 transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-slate-900 border-t border-white/10">
+            <div className="px-4 py-3 space-y-2">
+              <button 
+                onClick={() => {
+                  handleNavClick();
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded transition-colors"
+              >
+                Home
+              </button>
+              <button 
+                onClick={() => {
+                  handleNavClick('mission');
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded transition-colors"
+              >
+                Mission
+              </button>
+              <button 
+                onClick={() => {
+                  handleNavClick('gameplay');
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded transition-colors"
+              >
+                Gameplay
+              </button>
+              <button 
+                onClick={() => {
+                  setView('create');
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded transition-colors"
+              >
+                Create
+              </button>
+              <button 
+                onClick={() => {
+                  setView('tutorial');
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded transition-colors"
+              >
+                Guide
+              </button>
+              <button 
+                onClick={() => {
+                  window.location.href = 'https://github.com/chrishuangcf/mystery-murder/blob/main/documents/player/QUICK_START.md#quick-setup-with-docker';
+                  setMobileMenuOpen(false);
+                }} 
+                className="block w-full text-left px-4 py-2 bg-slate-100 text-slate-900 rounded-md hover:bg-white transition-colors font-bold"
+              >
+                Enter Game
+              </button>
+            </div>
+          </div>
+        )}
       </nav>
 
       <main>
